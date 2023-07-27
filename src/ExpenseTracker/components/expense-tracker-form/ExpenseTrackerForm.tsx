@@ -2,24 +2,25 @@ import React from "react";
 import { useForm, FieldValues, FormState } from "react-hook-form";
 import categories from "../../cateogories";
 
+interface Expense {
+  id: number;
+  description: string;
+  amount: number;
+  category: string;
+}
+
 interface Props {
-  onSubmit: (data: FieldValues) => void;
+  onSubmit: (data: Expense) => void;
 }
 
 const ExpenseTrackerForm = ({ onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
+    formState: { errors, isValid },
+    trigger,
+  } = useForm<Expense>();
 
-  const validation =
-    errors.expensedescription?.type === "required" ||
-    errors.expenseamount?.type === "required" ||
-    errors.expensedescription?.type === "maxLength" ||
-    errors.expenseamount?.type === "min"
-      ? true
-      : false;
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-3">
@@ -27,7 +28,7 @@ const ExpenseTrackerForm = ({ onSubmit }: Props) => {
           Expense description
         </label>
         <input
-          {...register("expensedescription", {
+          {...register("description", {
             required: true,
             maxLength: 25,
           })}
@@ -35,11 +36,12 @@ const ExpenseTrackerForm = ({ onSubmit }: Props) => {
           type="text"
           className="form-control"
           placeholder="Apple"
+          onBlur={() => trigger("description")}
         />
-        {errors.expensedescription?.type === "required" && (
+        {errors.description?.type === "required" && (
           <p className="text-danger">You must enter a description.</p>
         )}
-        {errors.expensedescription?.type === "maxLength" && (
+        {errors.description?.type === "maxLength" && (
           <p className="text-danger">Description should be shorter.</p>
         )}
       </div>
@@ -48,16 +50,17 @@ const ExpenseTrackerForm = ({ onSubmit }: Props) => {
           Amount
         </label>
         <input
-          {...register("expenseamount", { required: true, min: 0.1 })}
+          {...register("amount", { required: true, min: 0.1 })}
           id="expenseamount"
-          type="number"
+          type="float z|number"
           className="form-control"
           placeholder="$1.99"
+          onBlur={() => trigger("amount")}
         />
-        {errors.expenseamount?.type === "required" && (
+        {errors.amount?.type === "required" && (
           <p className="text-danger">You must enter a price.</p>
         )}
-        {errors.expenseamount?.type === "min" && (
+        {errors.amount?.type === "min" && (
           <p className="text-danger">You must enter a price.</p>
         )}
       </div>
@@ -67,15 +70,19 @@ const ExpenseTrackerForm = ({ onSubmit }: Props) => {
         </label>
         <select
           id="expense-category"
-          className="form-control"
-          {...register("category")}
+          className="form-select"
+          {...register("category", { required: true })}
+          onBlur={() => trigger("category")}
         >
           {categories.map((category) => (
             <option key={category}>{category}</option>
           ))}
         </select>
+        {errors.category?.type === "required" && (
+          <p className="text-danger">You must pick a valid category</p>
+        )}
       </div>
-      <button type="submit" className="btn btn-primary" disabled={validation}>
+      <button type="submit" className="btn btn-primary" disabled={!isValid}>
         Submit
       </button>
     </form>

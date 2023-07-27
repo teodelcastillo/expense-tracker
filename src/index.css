@@ -13,6 +13,21 @@ th {
     font-weight: normal;
 }
 
+
 td {
     text-align: center;
+    vertical-align: middle;
+}
+
+.form-control::placeholder {
+    color: lightgray;
+}
+
+span {
+    font-style: italic;
+    font-size: small;
+}
+
+#td-expense-description {
+    font-style: bold;
 }

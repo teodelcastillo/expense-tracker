@@ -13,8 +13,12 @@ interface Props {
 }
 
 const ExpenseTable = ({ expenses, onDelete }: Props) => {
-  if (expenses.length === 0) return <h5>No expenses yet.</h5>;
+  if (expenses.length === 0)
+    return <h5>Add your first expense to display table</h5>;
 
+  const totalAmount = expenses
+    .reduce((accumulate, expense) => +expense.amount + accumulate, 0)
+    .toFixed(2);
   return (
     <>
       <h1>Expenses list</h1>
@@ -31,8 +35,8 @@ const ExpenseTable = ({ expenses, onDelete }: Props) => {
           <tbody>
             {expenses.map((expense) => (
               <tr key={expense.id}>
-                <td>{expense.description}</td>
-                <td>{expense.amount}</td>
+                <td id="td-expense-description">{expense.description}</td>
+                <td>$ {expense.amount}</td>
                 <td>{expense.category}</td>
                 <td>
                   <button
@@ -48,12 +52,7 @@ const ExpenseTable = ({ expenses, onDelete }: Props) => {
           <tfoot>
             <tr>
               <td>Total</td>
-              <td>
-                $
-                {expenses
-                  .reduce((acc, expense) => expense.amount + acc, 0)
-                  .toFixed(2)}
-              </td>
+              <td id="td-total">${totalAmount}</td>
               <td></td>
               <td></td>
             </tr>
