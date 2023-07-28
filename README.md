@@ -1,10 +1,10 @@
-#Expense Tracker App in React with TypeScript and Bootstrap
+# Expense Tracker App in React with TypeScript and Bootstrap
 ![base project display](https://github.com/teodelcastillo/expense-tracker/blob/main/src/assets/project-images/1%20home.png)
 
-##Description:
+## Description:
 This GitHub repository contains an Expense Tracker application built using React, TypeScript, and Bootstrap. The purpose of this app is to allow users to track their expenses efficiently. As of now, the application operates solely on the client side and is not yet connected to a server.
 
-###Functionality:
+### Functionality:
 
 Expense Description: Users should input the title or description of their expense.
 Amount: Users should enter the cost or amount of the expense.
@@ -13,7 +13,7 @@ Once the user fills in these details, they can submit the form, and the expense 
 
 ![Example of displayed table](https://github.com/teodelcastillo/expense-tracker/blob/main/src/assets/project-images/2%20table%20displayed%20with%20expenses.png)
 
-###The app also provides the following features:
+### The app also provides the following features:
 
 Filtering: Users can filter expenses by category, making it easy to view expenses within specific categories.
 ![filter example](https://github.com/teodelcastillo/expense-tracker/blob/main/src/assets/project-images/filter%20categories.png)
