@@ -6,6 +6,7 @@ This GitHub repository contains an Expense Tracker application built using React
 
 Functionality:
 
+<<<<<<< HEAD
 Expense Description: Users can input the title or description of their expense.
 Amount: Users can enter the cost or amount of the expense.
 Category: Users can select a category for the expense from a dropdown menu containing four predefined categories.
@@ -14,6 +15,12 @@ Expense Description: Users should input the title or description of their expens
 Amount: Users should enter the cost or amount of the expense.
 Category: Users should select a category for the expense from a dropdown menu containing four predefined categories.
 Once the user fills in these details, they can submit the form, and the expense will be added to a table displaying all recorded expenses.
+=======
+Expense Description: Users should input the title or description of their expense.
+Amount: Users should enter the cost or amount of the expense.
+Category: Users should select a category for the expense from a dropdown menu containing four predefined categories.
+Once the user fills in these details, they can submit the form, and the expense will be added to a table displaying all recorded expenses. 
+>>>>>>> 27cc75952bee6819f366a5e0b3f7c41da5cca8ed
 
 ![Example of displayed table](https://github.com/teodelcastillo/expense-tracker/blob/main/src/assets/project-images/2%20table%20displayed%20with%20expenses.png)
 
@@ -33,5 +40,8 @@ Error handler: The submit button will not be clickable if there are errors, also
 Please note that the app is currently a client-side implementation, meaning all data is stored locally and will not persist if the page is refreshed. Future development may include server integration to provide data persistence and synchronization across different devices.
 
 Feel free to explore, contribute, or use this Expense Tracker app to manage your spending efficiently!# expense-tracker
+<<<<<<< HEAD
 Expense Tracker App built with React, TypeScript, and Bootstrap. User-side only, no server connection. Enter expense title, cost, and choose from 4 categories. Submit to add to table. Filter by category, view total, and delete expenses.
 0 comments on commit 27cc759
+=======
+>>>>>>> 27cc75952bee6819f366a5e0b3f7c41da5cca8ed
